@@ -44,4 +44,23 @@ public abstract class Plan0<R> {
         }
         return observer;
     }
+    
+    /**
+     * Extracts a method reference to the Observer's {@link Observer#onError(java.lang.Throwable) onError}
+     * method in the form of an {@link Action1}.
+     * <p>Java 8: observer::onError</p>
+     * 
+     * @param observer
+     *            the {@link Observer} to use
+     * @return an action which calls observer's {@code onError} method.
+     */
+    protected static <T> Action1<Throwable> onErrorFrom(final Observer<T> observer) {
+        return new Action1<Throwable>() {
+            @Override
+            public void call(Throwable t1) {
+                observer.onError(t1);
+            }
+        };
+    }
+
 }

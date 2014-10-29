@@ -22,7 +22,6 @@ import rx.Observer;
 import rx.functions.Action0;
 import rx.functions.Action1;
 import rx.functions.Action2;
-import rx.functions.Actions;
 import rx.functions.Func2;
 
 /**
@@ -40,7 +39,7 @@ public final class Plan2<T1, T2, R> extends Plan0<R> {
     @Override
     public ActivePlan0 activate(Map<Object, JoinObserver> externalSubscriptions,
             final Observer<R> observer, final Action1<ActivePlan0> deactivate) {
-        Action1<Throwable> onError = Actions.onErrorFrom(observer);
+        Action1<Throwable> onError = onErrorFrom(observer);
 
         final JoinObserver1<T1> jo1 = createObserver(externalSubscriptions, expression.o1(), onError);
         final JoinObserver1<T2> jo2 = createObserver(externalSubscriptions, expression.o2(), onError);

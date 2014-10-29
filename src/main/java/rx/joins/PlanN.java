@@ -24,7 +24,6 @@ import rx.Observer;
 import rx.functions.Action0;
 import rx.functions.Action1;
 import rx.functions.ActionN;
-import rx.functions.Actions;
 import rx.functions.FuncN;
 
 /**
@@ -42,7 +41,7 @@ public final class PlanN<R> extends Plan0<R> {
     @Override
     public ActivePlan0 activate(Map<Object, JoinObserver> externalSubscriptions,
             final Observer<R> observer, final Action1<ActivePlan0> deactivate) {
-        Action1<Throwable> onError = Actions.onErrorFrom(observer);
+        Action1<Throwable> onError = onErrorFrom(observer);
 
         final List<JoinObserver1<? extends Object>> observers = new ArrayList<JoinObserver1<? extends Object>>();
         for (int i = 0; i < expression.size(); i++) {
