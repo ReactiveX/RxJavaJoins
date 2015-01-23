@@ -21,7 +21,6 @@ import java.util.concurrent.atomic.AtomicReference;
 import rx.Observer;
 import rx.functions.Action0;
 import rx.functions.Action1;
-import rx.functions.Actions;
 import rx.functions.Func1;
 
 /**
@@ -38,7 +37,7 @@ public final class Plan1<T1, R> extends Plan0<R> {
 
     @Override
     public ActivePlan0 activate(Map<Object, JoinObserver> externalSubscriptions, final Observer<R> observer, final Action1<ActivePlan0> deactivate) {
-        Action1<Throwable> onError = Actions.onErrorFrom(observer);
+        Action1<Throwable> onError = onErrorFrom(observer);
 
         final JoinObserver1<T1> firstJoinObserver = createObserver(externalSubscriptions, expression.o1(), onError);
 
