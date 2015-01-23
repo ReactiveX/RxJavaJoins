@@ -17,36 +17,17 @@ package rx.joins.operators;
 
 import static org.junit.Assert.fail;
 import static org.mockito.Matchers.any;
-import static org.mockito.Mockito.inOrder;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.never;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 import java.util.Arrays;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.mockito.InOrder;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.junit.*;
+import org.mockito.*;
 
-import rx.Observable;
-import rx.Observer;
-import rx.functions.Func0;
-import rx.functions.Func1;
-import rx.functions.Func2;
-import rx.functions.Func3;
-import rx.functions.Func4;
-import rx.functions.Func5;
-import rx.functions.Func6;
-import rx.functions.Func7;
-import rx.functions.Func8;
-import rx.functions.Func9;
-import rx.functions.FuncN;
-import rx.functions.Functions;
-import rx.joins.PatternN;
-import rx.joins.Plan0;
+import rx.*;
+import rx.functions.*;
+import rx.internal.util.UtilityFunctions;
+import rx.joins.*;
 import rx.observables.JoinObservable;
 import rx.observers.TestSubscriber;
 import rx.subjects.PublishSubject;
@@ -350,12 +331,12 @@ public class OperatorJoinsTest {
 
     @Test
     public void then1() {
-        verifyAnd(JoinObservable.when(JoinObservable.from(some).then(Functions.<Integer> identity())), 1);
+        verifyAnd(JoinObservable.when(JoinObservable.from(some).then(UtilityFunctions.<Integer> identity())), 1);
     }
 
     @Test
     public void then1Error() {
-        verifyError(JoinObservable.when(JoinObservable.from(error).then(Functions.<Integer> identity())));
+        verifyError(JoinObservable.when(JoinObservable.from(error).then(UtilityFunctions.<Integer> identity())));
     }
 
     @Test
