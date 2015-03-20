@@ -26,12 +26,16 @@ Example for Maven:
     <version>x.y.z</version>
 </dependency>
 ```
-and for Ivy:
+for Ivy:
 
 ```xml
 <dependency org="io.reactivex" name="rxjava-joins" rev="x.y.z" />
 ```
 
+and for Gradle:
+```groovy
+    compile 'io.reactivex:rxjava-joins:0.22.0'
+```
 ## Build
 
 To build:
